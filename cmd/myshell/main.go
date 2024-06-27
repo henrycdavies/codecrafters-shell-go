@@ -55,7 +55,7 @@ func parseInput(input string) (string, []string, error) {
 }
 
 func handleInput() {
-	fmt.Fprint(os.Stdout, "\n$ ")
+	fmt.Fprint(os.Stdout, "$ ")
 	input, err := bufio.NewReader(os.Stdin).ReadString('\n')
 	if (err != nil) {
 		fmt.Fprintf(os.Stdout, "%s", err)
@@ -64,6 +64,7 @@ func handleInput() {
 	if (err == nil) {
 		handleCommand(command, args)
 	}
+	fmt.Fprint(os.Stdout, "\n")
 	handleInput()
 }
 
