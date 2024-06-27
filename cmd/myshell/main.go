@@ -2,15 +2,22 @@ package main
 
 import (
 	"bufio"
-	// Uncomment this block to pass the first stage
 	"fmt"
 	"os"
+	"strings"
 )
 
-func main() {
-	// Uncomment this block to pass the first stage
-	fmt.Fprint(os.Stdout, "$ ")
+func handleCommandNotFound(command string) {
+	fmt.Fprintf(os.Stdout, "%s: command not found", command)
+}
 
-	// Wait for user input
-	bufio.NewReader(os.Stdin).ReadString('\n')
+func main() {
+	fmt.Fprint(os.Stdout, "$ ")
+	input, err := bufio.NewReader(os.Stdin).ReadString('\n')
+	if (err != nil) {
+		fmt.Fprintf(os.Stdout, "%s", err)
+	}
+	command := strings.TrimSpace(input)
+	handleCommandNotFound(command)
+
 }
