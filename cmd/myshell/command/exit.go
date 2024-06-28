@@ -1,4 +1,4 @@
-package builtins
+package command
 
 import (
 	"errors"
@@ -7,13 +7,21 @@ import (
 	"strconv"
 )
 
-func Exit(args []string) (error) {
-	if (len(args) != 1) {
+type Exit struct {
+	args[] string
+}
+
+func (e Exit) GetType() CommandType {
+	return BUILTIN
+}
+
+func (e Exit) Execute() (error) {
+	if (len(e.args) != 1) {
 		errMsg := "an exit code arg must be provided to exit command"
 		fmt.Fprintf(os.Stdout, "%s", errMsg)
 		return errors.New(errMsg)
 	}
-	code, err := strconv.Atoi(args[0])
+	code, err := strconv.Atoi(e.args[0])
 	if (err != nil) {
 		errMsg := "an exit code arg must be provided to exit command"
 		fmt.Fprintf(os.Stdout, "%s", errMsg)
@@ -22,3 +30,4 @@ func Exit(args []string) (error) {
 	os.Exit(code)
 	return nil
 }
+

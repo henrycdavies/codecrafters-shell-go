@@ -7,25 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/codecrafters-io/shell-starter-go/cmd/myshell/builtins"
+	"github.com/codecrafters-io/shell-starter-go/cmd/myshell/command"
 )
-
-func handleCommandNotFound(command string) {
-	fmt.Fprintf(os.Stdout, "%s: command not found", command)
-}
-
-
-
-func handleCommand(command string, args []string) {
-	switch command {
-	case "exit":
-		builtins.Exit(args)
-	case "echo":
-		builtins.Echo(args)
-	default:
-		handleCommandNotFound(command)
-	}
-}
 
 func parseInput(input string) (string, []string, error) {
 	trimmed := strings.TrimSpace(input)
@@ -49,9 +32,10 @@ func handleInput() {
 	if (err != nil) {
 		fmt.Fprintf(os.Stdout, "%s", err)
 	}
-	command, args, err := parseInput(input)
+	commandInput, args, err := parseInput(input)
 	if (err == nil) {
-		handleCommand(command, args)
+		handler := command.Handler {}
+		handler.HandleCommand(commandInput, args)
 	}
 	fmt.Fprint(os.Stdout, "\n")
 	handleInput()
