@@ -5,34 +5,23 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
+
+	"github.com/codecrafters-io/shell-starter-go/cmd/myshell/builtins"
 )
 
 func handleCommandNotFound(command string) {
 	fmt.Fprintf(os.Stdout, "%s: command not found", command)
 }
 
-func exit(args []string) (error) {
-	if (len(args) != 1) {
-		errMsg := "an exit code arg must be provided to exit command"
-		fmt.Fprintf(os.Stdout, "%s", errMsg)
-		return errors.New(errMsg)
-	}
-	code, err := strconv.Atoi(args[0])
-	if (err != nil) {
-		errMsg := "an exit code arg must be provided to exit command"
-		fmt.Fprintf(os.Stdout, "%s", errMsg)
-		return errors.New(errMsg)
-	}
-	os.Exit(code)
-	return nil
-}
+
 
 func handleCommand(command string, args []string) {
 	switch command {
 	case "exit":
-		exit(args)
+		builtins.Exit(args)
+	case "echo":
+		builtins.Echo(args)
 	default:
 		handleCommandNotFound(command)
 	}
