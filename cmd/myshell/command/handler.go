@@ -10,7 +10,7 @@ import (
 type Handler struct {}
 
 func (h Handler) handleCommandNotFound(command string) {
-	fmt.Fprintf(os.Stdout, "%s: not found", command)
+	fmt.Fprintf(os.Stdout, "%s: not found\n", command)
 }
 
 func (h Handler) GetCommand(command string, args []string) (Command, error) {
