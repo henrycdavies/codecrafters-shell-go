@@ -27,7 +27,7 @@ func (h Handler) GetCommand(command string, args []string) (Command, error) {
 				h.handleCommandNotFound(command)
 				return nil, errors.New("Command not found")
 			}
-			return Executable{ path }, nil
+			return Executable{ path, args }, nil
 	}
 }
 
