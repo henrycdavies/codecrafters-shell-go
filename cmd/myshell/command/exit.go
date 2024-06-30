@@ -11,7 +11,7 @@ type Exit struct {
 	args[] string
 }
 
-func (e Exit) GetType() CommandType {
+func (e Exit) GetType() string {
 	return BUILTIN
 }
 

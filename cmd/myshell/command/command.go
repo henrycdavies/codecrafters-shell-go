@@ -1,15 +1,8 @@
 package command
 
-type CommandType string
-
-const (
-    EchoCommand CommandType = "echo"
-    ExitCommand CommandType = "exit"
-)
-
-const BUILTIN = "builtin"
+const BUILTIN = "a shell builtin"
 
 type Command interface {
-	GetType() CommandType
+	GetType() string
     Execute() (error)
 }

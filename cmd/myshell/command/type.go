@@ -10,7 +10,7 @@ type Type struct {
 	args []string
 }
 
-func (t Type) GetType() CommandType {
+func (t Type) GetType() string {
 	return BUILTIN
 }
 
@@ -22,10 +22,11 @@ func (t Type) Execute() (error) {
 	handler := Handler{}
 	var arr []string
 	command, err := handler.GetCommand(commandName, arr)
-	if (err != nil) {
-		return err
+
+	if (err == nil ){
+		commandType := command.GetType()
+		fmt.Fprintf(os.Stdout, "%s is %s", commandName, commandType)
+		return nil
 	}
-	commandType := command.GetType()
-	fmt.Fprintf(os.Stdout, "%s is a shell %s", commandName, commandType)
-	return nil
+	return err
 }

@@ -10,7 +10,7 @@ type Echo struct {
 	args []string
 }
 
-func (e Echo) GetType() CommandType {
+func (e Echo) GetType() string {
 	return BUILTIN
 }
 
