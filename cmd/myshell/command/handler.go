@@ -21,6 +21,8 @@ func (h Handler) GetCommand(command string, args []string) (Command, error) {
 			return Echo{ args }, nil
 		case "type":
 			return Type{ args }, nil
+		case "pwd":
+			return Pwd{}, nil
 		default:
 			path, err := h.searchExecutablePath(command)
 			if (err != nil) {
