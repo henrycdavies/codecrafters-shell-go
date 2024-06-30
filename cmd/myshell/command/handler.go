@@ -23,6 +23,8 @@ func (h Handler) GetCommand(command string, args []string) (Command, error) {
 			return Type{ args }, nil
 		case "pwd":
 			return Pwd{}, nil
+		case "cd":
+			return Cd{ args }, nil
 		default:
 			path, err := h.searchExecutablePath(command)
 			if (err != nil) {
