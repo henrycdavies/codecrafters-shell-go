@@ -16,6 +16,6 @@ func (e Echo) GetType() string {
 
 func (e Echo) Execute() (error) {
 	toEcho := strings.Join(e.args, " ")
-	fmt.Fprintf(os.Stdout, "%s", toEcho)
+	fmt.Fprintf(os.Stdout, "%s\n", toEcho)
 	return nil
 }

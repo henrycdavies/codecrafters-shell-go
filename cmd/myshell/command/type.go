@@ -25,7 +25,7 @@ func (t Type) Execute() (error) {
 
 	if (err == nil ){
 		commandType := command.GetType()
-		fmt.Fprintf(os.Stdout, "%s is %s", commandName, commandType)
+		fmt.Fprintf(os.Stdout, "%s is %s\n", commandName, commandType)
 		return nil
 	}
 	return err

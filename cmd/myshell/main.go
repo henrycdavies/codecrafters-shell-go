@@ -37,7 +37,7 @@ func handleInput() {
 		handler := command.Handler {}
 		handler.HandleCommand(commandInput, args)
 	}
-	fmt.Fprint(os.Stdout, "\n")
+	fmt.Fprint(os.Stdout, "")
 	handleInput()
 }
 
